@@ -30,3 +30,12 @@ class Reservas(models.Model):
     Nota = models.TextField()
     def __str__(self):
         return self.nombrecompleto
+
+class Contacto(models.Model):
+    nombre= models.CharField(max_length=35)
+    apellido=models.CharField(max_length=35)
+    email=models.EmailField(max_length=40)
+    asunto=models.CharField(max_length=150)
+    mensaje=models.TextField()
+    def __str__(self):
+        return self.nombre
