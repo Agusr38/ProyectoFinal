@@ -19,6 +19,18 @@
       </form>
 
 
+      {% for reseña in reseñas %}   
+      <div class="col-md-6">
+          <div class="text">
+            <h3><p>{{reseña.nombre}}</p> <a href="{%url 'borrarreseña' reseña.id %}">Borrar</a>  </h3>
+      
+            <p>{{reseña.reseña}}</p><a href="{%url 'editarreseña' reseña.id %}">Editar</a> 
+
+        
+      {% endfor %}
+        
+  
+
 
 
 </body>

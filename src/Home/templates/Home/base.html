@@ -15,10 +15,7 @@
     <link rel="stylesheet" href="{% static 'Home/css/style.min.css' %}">
     <link rel="stylesheet" href="{% static 'Home/css/custom.css' %}">
 
-    <!--[if lt IE 9]>
-      <script src="{% static 'Home/js/vendor/html5shiv.min.js' %}"></script>
-      <script src="{% static 'Home/js/vendor/respond.min.js' %}"></script> 
-    <![endif]-->
+    
   </head>
   <body>
 
@@ -35,22 +32,23 @@
         <nav role="navigation" class="probootstrap-nav hidden-xs">
           <ul class="probootstrap-main-nav">
             <li class="active"><a href="index.html">Inicio</a></li>
-            <li><a href="acercade.html">Acerca</a></li>
-            <li><a href="casas.html">Casas</a></li>
-            <li class="hidden-xs probootstrap-logo-center"><a href="index.html"><img src="img/logo_md.png" class="hires" width="181" height="50" alt="Free Bootstrap Template by uicookies.com"></a></li>
-            <li><a href="reservar.html">Reservar</a></li>
+            <li><a href="{%url 'reseñas' %}">Reseñas</a></li>
+            <li><a href="{%url 'casas' %}">Casas</a></li>
+            <li><a href="{%url 'reservas' %}">Reservar</a></li>
             <li><a href="blog.html">Blog</a></li>
-            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="{%url 'contacto' %}">Contacto</a></li>
+          
+          {% if request.user.username %}
+          <li><a href="{%url 'logout' %}">Cerrar sesion</a></li>
+          
+          {% else %}
+          <li><a href="{%url 'login' %}">Iniciar sesion</a></li>
+          {% endif %}
+            
+          
+          
           </ul>
-          <div class="extra-text visible-xs">
-            <a href="#" class="probootstrap-burger-menu"><i>Menu</i></a>
-            <h5>Connect With Us</h5>
-            <ul class="social-buttons">
-              <li><a href="#"><i class="icon-twitter"></i></a></li>
-              <li><a href="#"><i class="icon-facebook2"></i></a></li>
-              <li><a href="#"><i class="icon-instagram2"></i></a></li>
-            </ul>
-          </div>
+          
         </nav>
         </div>
     <!-- </div> -->
@@ -174,40 +172,6 @@
   
 
   <!-- START: footer -->
-  <footer role="contentinfo" class="probootstrap-footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="probootstrap-footer-widget">
-            <p class="mt40"><img src="img/logo_sm.png" class="hires" width="120" height="33" alt="Free HTML5 Bootstrap Template by uicookies.com"></p>
-            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-            <p><a href="#" class="link-with-icon">Learn More <i class=" icon-chevron-right"></i></a></p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="probootstrap-footer-widget">
-            <h3>Blog</h3>
-            <ul class="probootstrap-blog-list">
-              <li>
-                <a href="#">
-                  <figure class="probootstrap-image"><img src="img/img_1.jpg" alt="Free Bootstrap Template by uicookies.com" class="img-responsive"></figure>
-                  <div class="probootstrap-text">
-                    <h4>River named Duden flows</h4>
-                    <span class="meta">August 2, 2017</span>
-                    <p>A small river named Duden flows by their place</p>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <figure class="probootstrap-image"><img src="img/img_2.jpg" alt="Free Bootstrap Template by uicookies.com" class="img-responsive"></figure>
-                  <div class="probootstrap-text">
-                    <h4>River named Duden flows</h4>
-                    <span class="meta">August 2, 2017</span>
-                    <p>A small river named Duden flows by their place</p>
-                  </div>
-                </a>
-              </li>
               <li>
                 <a href="#">
                   <figure class="probootstrap-image"><img src="img/img_3.jpg" alt="Free Bootstrap Template by uicookies.com" class="img-responsive"></figure>
@@ -223,11 +187,11 @@
         </div>
         <div class="col-md-4">
           <div class="probootstrap-footer-widget">
-            <h3>Contact</h3>
+            <h3>Contacto</h3>
             <ul class="probootstrap-contact-info">
-              <li><i class="icon-location2"></i> <span>198 West 21th Street, Suite 721 New York NY 10016</span></li>
-              <li><i class="icon-mail"></i><span>info@domain.com</span></li>
-              <li><i class="icon-phone2"></i><span>+123 456 7890</span></li>
+              <li><i class="icon-location2"></i> <span>Cuesta los Robles 120, Cuesta Blanca , Córdoba</span></li>
+              <li><i class="icon-mail"></i><span>complejocuestalosrobles@gmail.com</span></li>
+              <li><i class="icon-phone2"></i><span>3516648111</span></li>
             </ul>
             
           </div>
@@ -236,13 +200,11 @@
       <div class="row mt40">
         <div class="col-md-12 text-center">
           <ul class="probootstrap-footer-social">
-            <li><a href=""><i class="icon-twitter"></i></a></li>
+            <li><a href=""><i class="icon-phone2"></i></a></li>
             <li><a href=""><i class="icon-facebook"></i></a></li>
-            <li><a href=""><i class="icon-instagram2"></i></a></li>
+            <li><a href="www.instagram.com/complejocuestalosrobles"><i class="icon-instagram2"></i></a></li>
           </ul>
-          <p>
-            <small>&copy; 2017 <a href="https://uicookies.com/" target="_blank">uiCookies:Atlantis</a>. All Rights Reserved. <br> Designed &amp; Developed by <a href="https://uicookies.com/" target="_blank">uicookies.com</a> Demo Images: Unsplash.com &amp; Pexels.com</small>
-          </p>
+         
           
         </div>
       </div>

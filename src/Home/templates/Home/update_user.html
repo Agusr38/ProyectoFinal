@@ -1,0 +1,10 @@
+
+<h1>Editar datos de:{{request.user.username}}</h1>
+
+
+<form  method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="button" value="Editar">
+
+</form>

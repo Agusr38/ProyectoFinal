@@ -7,10 +7,10 @@
 {% for casa in casas %}   
 <div class="col-md-6">
     <div class="text">
-      <h3><a href="#">{{casa.nombre}}</a></h3>
+      <h3>{{casa.nombre}}</h3>
 
       <p>{{casa.descripcion}}</p>
-      <p><a href="#" class="btn btn-primary">{{casa.precio}}</a></p>
+      <p> <a href="{%url 'casadetail' casa.id %}">Ver mas</a></p>
    
    </div>
 </div>

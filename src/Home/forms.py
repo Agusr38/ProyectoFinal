@@ -1,6 +1,6 @@
-from django.forms import Form,CharField,EmailField,DateField,IntegerField
-
-
+from django.forms import Form,CharField,EmailField,DateField,IntegerField,PasswordInput
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 #formulario busqueda casa
 class Formulariobusquedacasa(Form):
     nombre_casa = CharField(max_length=25)
@@ -31,3 +31,23 @@ class Formularioreserva(Form):
 class Formularioreseña(Form):
     nombre = CharField(max_length=35)
     reseña = CharField(max_length=300)
+
+class UserCustomCreationForm(UserCreationForm):
+    email = EmailField()
+    password1 = CharField(label="Contraseña", widget=PasswordInput)
+    password2 = CharField(label="Confirmar Contraseña", widget=PasswordInput)
+
+    class Meta:
+        model = User
+        fields =  ["username","email","password1","password2"]
+        help_texts = {k : "" for k in fields}
+
+class UserEditForm(UserCreationForm):
+    email = EmailField()
+    password1 = CharField(label="Contraseña", widget=PasswordInput)
+    password2 = CharField(label="Confirmar Contraseña", widget=PasswordInput)
+
+    class Meta:
+        model = User
+        fields =  ["username","email","password1","password2"]
+        help_texts = {k : "" for k in fields}
