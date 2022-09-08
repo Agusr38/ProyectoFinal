@@ -31,6 +31,16 @@
 
         <nav role="navigation" class="probootstrap-nav hidden-xs">
           <ul class="probootstrap-main-nav">
+            .
+            <div class="container">
+              {% if request.user.is_authenticated %}
+              <p>Bienvenido {{request.user}}</p>
+                        
+              {% endif %}
+              
+            </div> 
+            
+            
             <li class="active"><a href="index.html">Inicio</a></li>
             <li><a href="{%url 'reseñas' %}">Reseñas</a></li>
             <li><a href="{%url 'casas' %}">Casas</a></li>
@@ -38,19 +48,25 @@
             <li><a href="blog.html">Blog</a></li>
             <li><a href="{%url 'contacto' %}">Contacto</a></li>
           
-          {% if request.user.username %}
+          {% if request.user.is_authenticated %}
           <li><a href="{%url 'logout' %}">Cerrar sesion</a></li>
           
           {% else %}
           <li><a href="{%url 'login' %}">Iniciar sesion</a></li>
           {% endif %}
-            
+          
+          
+          
           
           
           </ul>
           
         </nav>
-        </div>
+        
+      
+      </div>
+
+        
     <!-- </div> -->
   </header>
 <div>

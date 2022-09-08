@@ -1,5 +1,5 @@
 from django.shortcuts import render,HttpResponse,redirect
-from .models import Casa,Reseña,Reservas,Contacto
+from .models import Casa,Reseña,Reservas,Contacto,Avatar
 from Home.forms import Formulariobusquedacasa,Formulariocontacto,Formularioreserva,Formularioreseña,UserEditForm
 from django.views.generic import ListView,DetailView,UpdateView
 from django.contrib.auth.forms import AuthenticationForm,UserCreationForm
@@ -11,6 +11,7 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def index (request):
+        
     casas= Casa.objects.all()
     return render(request,"Home/index.html",{'casas': casas})
 
@@ -209,5 +210,22 @@ def registrar_usuario(request):
 def editar_usuario(request):
 
     if request.method == "GET":
-        form = UserEditForm({"email":request.user.email,"username":request.user.username})
+        form = UserEditForm(initial={"email":request.user.email,"username":request.user.username,"first_name":request.user.first_name,"last_name":request.user.last_name})
+        return render(request,"Home/update_user.html",{"form":form})
+    else:
+        form = UserEditForm(request.POST)
+        
+        if form.is_valid():
+            data = form.cleaned_data
+
+            usuario = request.user
+
+            usuario.email = data["email"]
+            usuario.password1 = data["password1"]
+            usuario.password2 = data["password2"]
+            usuario.first_name = data["first_name"]
+            usuario.last_name = data["last_name"]
+            
+            usuario.save()
+            return redirect("inicio")
         return render(request,"Home/update_user.html",{"form":form})
