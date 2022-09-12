@@ -1,33 +1,35 @@
 {% extends 'Home/base.html' %}
-{% block imagen %}
 
-{% endblock imagen %}
 {% block lista_casas %}
-    <title>Reseñas</title>
+    
+ 
 
-    <form method="post">{% csrf_token %}
-  
-        <table>
-        
-          {{mireseña.as_table}}
-      
-        </table>
-        <p><input type="submit" value="Enviar"></p>
-      </form>
-      
-<div>
       {% for reseña in reseñas %}   
       <div class="col-md-6">
           <div class="text">
             <h3><p>{{reseña.nombre}}</p> <a href="{%url 'borrarreseña' reseña.id %}">Borrar</a>  </h3>
       
             <p>{{reseña.reseña}}</p><a href="{%url 'editarreseña' reseña.id %}">Editar</a> 
-
-        
+</div>
+</div>
       {% endfor %}
+     
+     
+     
+   <div>
+        <h2>Agregue su reseña</h2>
         
+        <form method="post">{% csrf_token %}
+      
+            <table>
+            
+              {{mireseña.as_table}}
+          
+            </table>
+            <p><input type="submit" value="Enviar"></p>
+          </form>
+        </div>         
   
-    </div>
      
     {% endblock lista_casas %}
 
