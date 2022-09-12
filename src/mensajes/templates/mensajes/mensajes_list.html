@@ -1,0 +1,21 @@
+
+   
+    <a href="{% url 'mensajes_send' %}">Enviar mensaje</a>
+
+
+
+
+{% if object_list %}
+
+{% for mensajes in object_list %}
+  {{mensajes.usuario.username}}: {{mensajes.mensaje}} - {{mensajes.fecha}}</p>
+{% endfor %}
+
+{% else %}
+
+    
+   
+        <p>No hay mensajes aún</p>
+  
+
+{% endif %}
