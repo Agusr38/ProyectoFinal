@@ -1,19 +1,35 @@
 
+{% extends 'Home/base.html' %}
+
+
+
+{% block imagen %}
+
+{% endblock imagen %}
+
+{% block lista_casas %}
+<div>
 <form method="get">
-{{formulario.as_p}}
-<input type="submit" value="Buscar">
-</form>
-
-{% for casa in casas %}   
-<div class="col-md-6">
-    <div class="text">
-      <h3>{{casa.nombre}}</h3>
-
-      <p>{{casa.descripcion}}</p>
-      <p> <a href="{%url 'casadetail' casa.id %}">Ver mas</a></p>
+   {{formulario.as_p}}
+   <input type="submit" value="Buscar">
+   </form>
+   <div>
+   {% for casa in casas %}   
+   <div class="col-md-6">
+       <div class="text">
+         <h3>{{casa.nombre}}</h3>
    
-   </div>
-</div>
-{% endfor %}
+         <p>{{casa.descripcion}}</p>
+         <p> <a href="{%url 'casadetail' casa.id %}">Ver mas</a></p>
+      
+      </div>
+  
+   
+   {% endfor %}
+   
+{% endblock lista_casas %}
+      
+ 
+  
 
       

@@ -21,27 +21,28 @@
 
   <!-- START: header -->
 
-  <header role="banner" class="probootstrap-header">
-    <!-- <div class="container"> -->
+  {% block barralinks %}
+    
     <div class="row">
-        <a href="index.html" class="probootstrap-logo visible-xs"><img src="{% static 'Home/img/logo_sm.png' %}" class="hires" width="120" height="33" alt="Free Bootstrap Template by uicookies.com"></a>
         
-        <a href="#" class="probootstrap-burger-menu visible-xs"><i>Menu</i></a>
-        <div class="mobile-menu-overlay"></div>
+        
 
         <nav role="navigation" class="probootstrap-nav hidden-xs">
           <ul class="probootstrap-main-nav">
             .
-            <div class="container">
-              {% if request.user.is_authenticated %}
-              <p>Bienvenido {{request.user}}</p>
-                        
-              {% endif %}
+           
+             
+             
               
-            </div> 
+             
+              
+             
+              {% if request.user.is_authenticated %}
+             
+                        
             
             
-            <li class="active"><a href="{%url 'inicio' %}">Inicio</a></li>
+            <li><a href="{%url 'inicio' %}">Inicio</a></li>
             <li><a href="{%url 'reseñas' %}">Reseñas</a></li>
             <li><a href="{%url 'casas' %}">Casas</a></li>
             <li><a href="{%url 'reservas' %}">Reservar</a></li>
@@ -49,15 +50,19 @@
             <li><a href="{%url 'contacto' %}">Contacto</a></li>
             <li><a href="{%url 'mensajes_list' %}">Chat</a></li>
             <li><a href="{%url 'acercade' %}">Acerca de</a></li>
-          {% if request.user.is_authenticated %}
-          <li><a href="{%url 'logout' %}">Cerrar sesion</a></li>
+            <li><a href="{%url 'logout' %}">Cerrar sesion</a></li>
           
           {% else %}
+          <li><a href="{%url 'inicio' %}">Inicio</a></li>
+          <li><a href="{%url 'casas' %}">Casas</a></li>
+          <li><a href="{%url 'blog' %}">Blog</a></li>
           <li><a href="{%url 'login' %}">Iniciar sesion</a></li>
+          <li><a href="{%url 'register' %}">Crear Usuario</a></li>
+          <li><a href="{%url 'acercade' %}">Acerca de</a></li>
           {% endif %}
           
           
-          
+       
           
           
           </ul>
@@ -66,117 +71,31 @@
         
       
       </div>
-
-        
-    <!-- </div> -->
+      {% endblock barralinks %} 
+     
+     {% block imagen %}
+     <center> <img src="https://lh3.googleusercontent.com/p/AF1QipOG4qo2GF5TfbvUXbOfUikcS8-g2XSF3Lr-VAui=w1080-h608-p-no-v0" alt="fondo"> 
+     </center>
+     {% endblock imagen %}
+     
+    
+    
   </header>
 <div>
 
 </div>
   <!-- END: header -->
-
-  <section class="probootstrap-slider flexslider">
-    <ul class="slides">
-       <li style="background-image: url(Home/img/slider_1.jpg)"; class="overlay">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-10 col-md-offset-1">
-                <div class="probootstrap-slider-text text-center">
-                  <p><img src="{% static 'Home/img/curve_white.svg' %}" class="seperator probootstrap-animate" alt="Free HTML5 Bootstrap Template"></p>
-                  <h1>Complejo Cuesta Los Robles</h1>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li style="background-image: url(img/slider_2.jpg);" class="overlay">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-10 col-md-offset-1">
-                <div class="probootstrap-slider-text text-center">
-                  <p><img src="img/curve_white.svg" class="seperator probootstrap-animate" alt="Free HTML5 Bootstrap Template"></p>
-                  <h1 class="probootstrap-heading probootstrap-animate">Enjoy Luxury Experience</h1>
-                  <div class="probootstrap-animate probootstrap-sub-wrap">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-        </li>
-    </ul>
-  </section>
-
-  <section class="probootstrap-cta probootstrap-light">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <h2 class="probootstrap-cta-heading">Rerservar casa </h2>
-          <div class="probootstrap-cta-button-wrap"><a href="#" class="btn btn-primary">Reservar </a></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="probootstrap-section">
-    <div class="container">
-      <div class="row mb30">
-        <div class="col-md-8 col-md-offset-2 probootstrap-section-heading text-center">
-          <h2>Nuestro complejo</h2>
-          <p class="lead">Casas serranas.</p>
-          <p><img src="img/curve.svg" class="svg" alt="Free HTML5 Bootstrap Template"></p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="service left-icon probootstrap-animate">
-            <div class="icon">
-              <img src="img/flaticon/svg/001-building.svg" class="svg" alt="Free HTML5 Bootstrap Template by uicookies.com">
-            </div>
-            <div class="text">
-              <h3>1+ Million Hotel Rooms</h3>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-              <p><a href="#" class="link-with-icon">Learn More <i class=" icon-chevron-right"></i></a></p>
-            </div>  
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="service left-icon probootstrap-animate">
-            <div class="icon">
-              <img src="img/flaticon/svg/003-restaurant.svg" class="svg" alt="Free HTML5 Bootstrap Template by uicookies.com">
-            </div>
-            <div class="text">
-              <h3>Food &amp; Drinks</h3>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-              <p><a href="#" class="link-with-icon">Learn More <i class=" icon-chevron-right"></i></a></p>
-            </div>  
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="service left-icon probootstrap-animate">
-            <div class="icon">
-              <img src="img/flaticon/svg/004-parking.svg" class="svg" alt="Free HTML5 Bootstrap Template by uicookies.com">
-            </div>
-            <div class="text">
-              <h3>Airport Taxi</h3>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-              <p><a href="#" class="link-with-icon">Learn More <i class=" icon-chevron-right"></i></a></p>
-            </div>  
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="probootstrap-section probootstrap-section-dark">
+  {% block lista_casas %}
+   <section class="probootstrap-section probootstrap-section-dark">
     <div class="container">
       <div class="row mb30">
         <div class="col-md-8 col-md-offset-2 probootstrap-section-heading text-center">
           <h2>Nuestras casas</h2>
-          <p class="lead">casas serranas.</p>
+         
           
           <div>
          
-        {% block lista_casas %}
+        
         {% endblock lista_casas %}     
         
             </div>
@@ -189,21 +108,10 @@
   
 
   <!-- START: footer -->
-              <li>
-                <a href="#">
-                  <figure class="probootstrap-image"><img src="img/img_3.jpg" alt="Free Bootstrap Template by uicookies.com" class="img-responsive"></figure>
-                  <div class="probootstrap-text">
-                    <h4>River named Duden flows</h4>
-                    <span class="meta">August 2, 2017</span>
-                    <p>A small river named Duden flows by their place</p>
-                  </div>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="probootstrap-footer-widget">
+
+       >
+            <center>
+              
             <h3>Contacto</h3>
             <ul class="probootstrap-contact-info">
               <li><i class="icon-location2"></i> <span>Cuesta los Robles 120, Cuesta Blanca , Córdoba</span></li>
@@ -211,15 +119,15 @@
               <li><i class="icon-phone2"></i><span>3516648111</span></li>
             </ul>
             
-          </div>
-        </div>
-      </div>
-      <div class="row mt40">
+         
+      </center>
+  
+  <div class="row mt40">
         <div class="col-md-12 text-center">
           <ul class="probootstrap-footer-social">
-            <li><a href=""><i class="icon-phone2"></i></a></li>
-            <li><a href=""><i class="icon-facebook"></i></a></li>
-            <li><a href="www.instagram.com/complejocuestalosrobles"><i class="icon-instagram2"></i></a></li>
+            <li><a href="https://wa.me/543516648111"><i class="icon-phone2"></i></a></li>
+            <li><a href="https://www.facebook.com/CabanaCuestaLosRobles/"><i class="icon-facebook"></i></a></li>
+            <li><a href="https://instagram.com/complejocuestalosrobles"><i class="icon-instagram2"></i></a></li>
           </ul>
          
           

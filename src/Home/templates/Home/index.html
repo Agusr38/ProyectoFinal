@@ -1,12 +1,11 @@
 {% extends 'Home/base.html' %}
 
-
 {% block lista_casas %}
-
-
+<center><h2>Nuestras Casas</h2></center>
     {% for casa in casas %}   
-    <div class="col-md-6">
-        <div class="text">
+    
+    
+    
             <p><img src="/media/{{casa.imagen_casa}}" height="100" width="100"></p>
           
             <h3><a href="{%url 'casadetail' casa.id %}">{{casa.nombre}}</a></h3>

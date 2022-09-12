@@ -1,3 +1,11 @@
+{% extends 'Home/base.html' %}
+{% block imagen %}
+
+{% endblock imagen %}
+{% block lista_casas %}
+
+
+
 <form method="post">
     
     {% if error  %}
@@ -12,3 +20,5 @@
     {{form.as_p}}
     <input type="submit" value="Crear">
 </form>
+
+{% endblock lista_casas %}

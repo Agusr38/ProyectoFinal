@@ -1,4 +1,11 @@
 
+{% extends 'Home/base.html' %}
+{% block imagen %}
+
+{% endblock imagen %}
+{% block lista_casas %}
+
+
 <h1>Editar datos de:{{request.user.get_full_name}}</h1>
 <h2>Ultimo inicio de sesion:{{request.user.last_login}}</h2>
 
@@ -9,3 +16,4 @@
     <input type="submit" value="Editar">
 
 </form>
+{% block lista_casas %}

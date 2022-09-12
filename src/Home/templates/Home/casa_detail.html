@@ -1,3 +1,9 @@
+{% extends 'Home/base.html' %}
+{% block imagen %}
+
+{% endblock imagen %}
+{% block lista_casas %}
+
 <p>{{casa.nombre}}</p>
 <p>Precio por dia:{{casa.precio}}</p>
 <p>{{casa.descripcion}}</p>
@@ -5,3 +11,4 @@
 <p><img src="/media/{{casa.imagen_casa}}" height="400" width="400"></p>
 
 <p><a href="{%url 'reservas'%}">Reservar</a></p>
+{% endblock lista_casas %}
