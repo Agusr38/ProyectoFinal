@@ -19,8 +19,16 @@ urlpatterns = [
     path("reseñas/borrar/<id_reseña>",borrar_reseña,name="borrarreseña"),
     path("reseñas/editar/<pk>",Updatereseña.as_view(),name="editarreseña"),
 
+    path("blog/",BlogList.as_view(),name="blog"),
+    path("blog/<pk>",BlogDetail.as_view(),name="blogdetail"),
+    
+
+
     path("login/",iniciosesion, name="login"),
     path("register/",registrar_usuario, name="register"),
     path("logout/",LogoutView.as_view(template_name="Home/logout.html"), name="logout"),
     path("edit/",editar_usuario, name="editar_usuario"),
+    path("avatar/",agregar_avatar, name="agregar_avatar"),
+
+    path("about/",acercade, name="acercade"),
 ]

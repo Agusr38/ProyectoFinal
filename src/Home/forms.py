@@ -1,4 +1,4 @@
-from django.forms import Form,CharField,EmailField,DateField,IntegerField,PasswordInput
+from django.forms import Form,CharField,EmailField,DateField,IntegerField,PasswordInput,ImageField
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 #formulario busqueda casa
@@ -54,3 +54,13 @@ class UserEditForm(UserCreationForm):
         model = User
         fields =  ["email","password1","password2","first_name","last_name"]
         help_texts = {k : "" for k in fields}
+
+class AvatarForm(Form):
+    imagen =  ImageField()
+
+
+class BlogFormulario(Form):
+    Autor= CharField(max_length=35)
+    Titulo= CharField(max_length=35)
+    Cuerpo= CharField(max_length=4000)
+    Imagen = ImageField()

@@ -41,13 +41,13 @@
             </div> 
             
             
-            <li class="active"><a href="index.html">Inicio</a></li>
+            <li class="active"><a href="{%url 'inicio' %}">Inicio</a></li>
             <li><a href="{%url 'reseñas' %}">Reseñas</a></li>
             <li><a href="{%url 'casas' %}">Casas</a></li>
             <li><a href="{%url 'reservas' %}">Reservar</a></li>
-            <li><a href="blog.html">Blog</a></li>
+            <li><a href="{%url 'blog' %}">Blog</a></li>
             <li><a href="{%url 'contacto' %}">Contacto</a></li>
-          
+            <li><a href="{%url 'acercade' %}">Acerca de</a></li>
           {% if request.user.is_authenticated %}
           <li><a href="{%url 'logout' %}">Cerrar sesion</a></li>
           

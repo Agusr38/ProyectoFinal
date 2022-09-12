@@ -9,6 +9,7 @@ class Casa(models.Model):
     descripcion = models.TextField()
     disponibilidad = models.BooleanField(default=True)
     capacidad = models.IntegerField()
+    imagen_casa = models.ImageField(upload_to="imagenes_casas",null=True)
 
     def __str__(self):
         return self.nombre
@@ -43,5 +44,14 @@ class Contacto(models.Model):
         return self.nombre
 
 class Avatar(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
     imagen = models.ImageField(upload_to="avatares",null=True,blank=True)
+
+
+class Blog(models.Model):
+    Autor= models.CharField(max_length=35)
+    Titulo=models.CharField(max_length=35)
+    Cuerpo=models.TextField(max_length=4000)
+    Imagen = models.ImageField(upload_to="imagen_blog",null=True,blank=True)
+    def __str__(self):
+        return self.Titulo

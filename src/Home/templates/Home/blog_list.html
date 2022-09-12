@@ -1,0 +1,17 @@
+
+<center>
+<head>BLOGS</head>
+</center>
+
+
+
+
+{% if object_list %}
+{% for blog in object_list %}
+<p>{{blog.Titulo}}</p>
+<p>Autor:{{blog.Autor}}</p>
+<p><img src="/media/{{blog.Imagen}}"  height="400" width="400"></p>
+<p> <a href="{%url 'blogdetail' blog.id %}">Ver mas</a></p>
+
+{% endfor %}
+{% endif %}

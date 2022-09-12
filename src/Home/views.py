@@ -1,17 +1,18 @@
 from django.shortcuts import render,HttpResponse,redirect
-from .models import Casa,Reseña,Reservas,Contacto,Avatar
-from Home.forms import Formulariobusquedacasa,Formulariocontacto,Formularioreserva,Formularioreseña,UserEditForm
-from django.views.generic import ListView,DetailView,UpdateView
+from .models import Casa,Reseña,Reservas,Contacto,Avatar,Blog
+from Home.forms import Formulariobusquedacasa,Formulariocontacto,Formularioreserva,Formularioreseña,UserEditForm,AvatarForm
+from django.views.generic import ListView,DetailView,UpdateView,CreateView,DeleteView
 from django.contrib.auth.forms import AuthenticationForm,UserCreationForm
 from django.contrib.auth import logout,authenticate,login
 from Home.forms import UserCustomCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 # Create your views here.
 
 def index (request):
-        
+       
     casas= Casa.objects.all()
     return render(request,"Home/index.html",{'casas': casas})
 
@@ -147,16 +148,21 @@ class CasaDetail(DetailView):
 
 #Blog
 
+class BlogList(ListView):
+    model = Blog
+    template_name = "Home/blog_list.html"
 
 class BlogDetail(DetailView):
-    pass
+    model = Blog
+    template_name = "Home/blog_detail.html"
 
 
 
-def acercade(request):
-    pass
 
 
+
+
+#Login
 def iniciosesion(request):
     if request.method == "GET":
         formulario = AuthenticationForm()
@@ -229,3 +235,25 @@ def editar_usuario(request):
             usuario.save()
             return redirect("inicio")
         return render(request,"Home/update_user.html",{"form":form})
+
+
+
+@login_required
+def agregar_avatar(request):
+    if request.method =="GET":
+        form = AvatarForm()
+        contexto ={"form":form}
+        return render(request, "home/agregar_avatar.html",contexto)
+    else:
+        form = AvatarForm(request.POST,request.FILES)
+
+        if form.is_valid():
+            data = form.cleaned_data
+
+            usuario = User.objects.filter(username=request.user.username).first()
+            avatar = Avatar(usuario=usuario,imagen=data["imagen"])
+            avatar.save()
+
+
+def acercade(request):
+    return render(request, "home/about.html")
